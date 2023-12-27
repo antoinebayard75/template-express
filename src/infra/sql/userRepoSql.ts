@@ -1,7 +1,7 @@
 import {IUserRepo} from "../../domain/users/IUserRepo";
 import {RowDataPacket} from "mysql2";
 import {User} from "../../domain/users/user";
-import {connection} from "./db";
+import {connection} from "../../db";
 import {UserFactory} from "../../domain/users/userFactory";
 import {injectable} from "inversify";
 
