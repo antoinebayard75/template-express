@@ -5,7 +5,7 @@ import {inject, injectable} from "inversify";
 import {Password} from "../../domain/users/password/password";
 import {UserAssembler} from "./userAssembler";
 import {UserResponse} from "./userResponse";
-import {Identifier} from "../../identifier";
+import {Identifier} from "../../config/identifier";
 
 @injectable()
 export class UserService {

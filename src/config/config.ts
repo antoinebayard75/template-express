@@ -1,10 +1,10 @@
-import {IUserRepo} from "./domain/users/IUserRepo";
-import {UserRepoSql} from "./infra/sql/userRepoSql";
+import {IUserRepo} from "../domain/users/IUserRepo";
+import {UserRepoSql} from "../infra/sql/userRepoSql";
 import {Container} from "inversify";
-import {UserService} from "./application/user/userService";
-import {UserController} from "./controller/userController";
-import {AuthController} from "./controller/authController";
-import {AuthService} from "./application/auth/authService";
+import {UserService} from "../application/user/userService";
+import {UserController} from "../controller/userController";
+import {AuthController} from "../controller/authController";
+import {AuthService} from "../application/auth/authService";
 import {Identifier} from "./identifier";
 
 export class Config{

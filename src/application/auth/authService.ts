@@ -4,7 +4,7 @@ import {tokenResponse} from "./tokenResponse";
 import {TokenAssembler} from "./tokenAssembler";
 import {IToken} from "../../domain/token/IToken";
 import {Token} from "../../domain/token/token";
-import {Identifier} from "../../identifier";
+import {Identifier} from "../../config/identifier";
 
 @injectable()
 export class AuthService{

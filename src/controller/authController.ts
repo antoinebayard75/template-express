@@ -1,7 +1,7 @@
 import {inject, injectable} from "inversify";
 import {Request, Response} from 'express';
 import {AuthService} from "../application/auth/authService";
-import {Identifier} from "../identifier";
+import {Identifier} from "../config/identifier";
 
 @injectable()
 export class AuthController{

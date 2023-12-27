@@ -1,7 +1,7 @@
 import express from 'express';
 import {AuthController} from "../controller/authController";
-import {Identifier} from "../identifier";
-import {Config} from "../config";
+import {Identifier} from "../config/identifier";
+import {Config} from "../config/config";
 
 const router = express.Router();
 

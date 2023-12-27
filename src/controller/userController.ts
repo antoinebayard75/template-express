@@ -1,7 +1,7 @@
 import {UserService} from "../application/user/userService";
 import {Request, Response} from 'express';
 import {inject, injectable} from "inversify";
-import {Identifier} from "../identifier";
+import {Identifier} from "../config/identifier";
 
 @injectable()
 export class UserController{
