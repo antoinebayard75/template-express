@@ -1,4 +1,6 @@
+import {UserPayload} from "../users/userPayload";
+
 export interface IToken {
-    sign();
-    getPayload();
+    sign() : string;
+    getPayload() : UserPayload;
 }
