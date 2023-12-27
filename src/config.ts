@@ -7,22 +7,6 @@ import {AuthController} from "./controller/authController";
 import {AuthService} from "./application/auth/authService";
 import {Identifier} from "./identifier";
 
-// const config = () => {
-//     const container = new Container();
-//     // UserController
-//     container.bind<UserService>(Identifier.UserService).to(UserService);
-//     container.bind<UserController>(Identifier.UserController).to(UserController);
-//
-//     // AuthController
-//     container.bind<AuthService>(Identifier.AuthService).to(AuthService);
-//     container.bind<AuthController>(Identifier.AuthController).to(AuthController);
-//
-//     // Repo
-//     container.bind<IUserRepo>(Identifier.UserRepo).to(UserRepoSql);
-//
-//     return container;
-// }
-
 export class Config{
     private static instance : Config | null = null;
     private readonly container : Container;
