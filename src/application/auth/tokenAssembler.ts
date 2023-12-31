@@ -1,8 +1,8 @@
-import {IToken} from "../../domain/token/IToken";
-import {tokenResponse} from "./tokenResponse";
+import IToken from "../../domain/token/IToken";
+import tokenResponse from "./tokenResponse";
 
 
-export class TokenAssembler {
+export default class TokenAssembler {
     toResponse(token : IToken) : tokenResponse{
         return {
             token: token.sign()

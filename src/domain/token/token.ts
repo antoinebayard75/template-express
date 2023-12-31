@@ -1,11 +1,11 @@
 import jwt, {Secret} from 'jsonwebtoken';
-import {IToken} from "./IToken";
+import IToken from "./IToken";
 import dotenv from "dotenv";
-import {UserPayload} from "../users/userPayload";
+import UserPayload from "../users/userPayload";
 
 dotenv.config();
 
-export class Token implements IToken {
+export default class Token implements IToken {
     private readonly payload: UserPayload;
 
     public constructor(payload : UserPayload) {

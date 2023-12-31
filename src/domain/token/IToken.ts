@@ -1,6 +1,6 @@
 import {UserPayload} from "../users/userPayload";
 
-export interface IToken {
+export default interface IToken {
     sign() : string;
     getPayload() : UserPayload;
 }

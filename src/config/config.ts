@@ -1,13 +1,13 @@
-import {IUserRepo} from "../domain/users/IUserRepo";
+import IUserRepo from "../domain/users/IUserRepo";
 import {UserRepoSql} from "../infra/sql/userRepoSql";
 import {Container} from "inversify";
-import {UserService} from "../application/user/userService";
+import UserService from "../application/user/userService";
 import {UserController} from "../controller/userController";
 import {AuthController} from "../controller/authController";
-import {AuthService} from "../application/auth/authService";
-import {Identifier} from "./identifier";
+import AuthService from "../application/auth/authService";
+import Identifier from "./identifier";
 
-export class Config{
+export default class Config{
     private static instance : Config | null = null;
     private readonly container : Container;
 

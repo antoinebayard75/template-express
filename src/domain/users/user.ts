@@ -2,9 +2,9 @@ import {IUserId} from "./id/IUserId";
 import {IPassword} from "./password/IPassword";
 import {Password} from "./password/password";
 import {Email} from "./email/email";
-import {UserPayload} from "./userPayload";
+import UserPayload from "./userPayload";
 
-export class User {
+export default class User {
   private readonly id: IUserId;
   private readonly name: string;
   private readonly email: Email;

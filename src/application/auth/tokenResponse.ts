@@ -1,5 +1,6 @@
 
 
-export type tokenResponse = {
+type tokenResponse = {
     token: string
 }
+export default tokenResponse;

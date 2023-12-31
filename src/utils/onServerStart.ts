@@ -11,6 +11,7 @@ export const onServerStart = (port : any) => {
     const db_connected = `${prefix} ${green} Database connected successfully\n${separator}`
     const db_error = `${prefix} ${red} Error connecting to database\n${separator}`
 
+    console.log(separator)
     console.log(server_running)
     connection.connect((err) => {
         console.log((err) ? db_error : db_connected)

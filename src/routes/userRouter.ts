@@ -1,7 +1,7 @@
 import express from 'express';
 import {UserController} from "../controller/userController";
-import {Identifier} from "../config/identifier";
-import {Config} from "../config/config";
+import Identifier from "../config/identifier";
+import Config from "../config/config";
 
 const router = express.Router();
 

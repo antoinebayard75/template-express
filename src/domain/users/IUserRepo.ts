@@ -1,6 +1,6 @@
 import { User } from "./user";
 
-export interface IUserRepo {
+export default interface IUserRepo {
     save(User: User): Promise<User>
     findAll(): Promise<User[]>
     findOneByEmail(email: string): Promise<User | null>

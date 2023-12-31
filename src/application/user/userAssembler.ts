@@ -1,7 +1,7 @@
-import {User} from "../../domain/users/user";
-import {UserResponse} from "./userResponse";
+import User from "../../domain/users/user";
+import UserResponse from "./userResponse";
 
-export class UserAssembler{
+export default class UserAssembler{
     toResponse(user: User): UserResponse{
         return {
             id: user.getIdAsString(),

@@ -1,13 +1,13 @@
 import {inject, injectable} from "inversify";
-import {IUserRepo} from "../../domain/users/IUserRepo";
-import {tokenResponse} from "./tokenResponse";
-import {TokenAssembler} from "./tokenAssembler";
-import {IToken} from "../../domain/token/IToken";
-import {Token} from "../../domain/token/token";
-import {Identifier} from "../../config/identifier";
+import IUserRepo from "../../domain/users/IUserRepo";
+import tokenResponse from "./tokenResponse";
+import TokenAssembler from "./tokenAssembler";
+import IToken from "../../domain/token/IToken";
+import Token from "../../domain/token/token";
+import Identifier from "../../config/identifier";
 
 @injectable()
-export class AuthService{
+export default class AuthService{
     private userRepo: IUserRepo;
     private tokenAssembler = new TokenAssembler();
 

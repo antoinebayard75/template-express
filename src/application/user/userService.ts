@@ -1,14 +1,14 @@
-import {IUserRepo} from "../../domain/users/IUserRepo";
-import {UserFactory} from "../../domain/users/userFactory";
+import IUserRepo from "../../domain/users/IUserRepo";
+import UserFactory from "../../domain/users/userFactory";
 import {UserId} from "../../domain/users/id/userId";
 import {inject, injectable} from "inversify";
 import {Password} from "../../domain/users/password/password";
-import {UserAssembler} from "./userAssembler";
-import {UserResponse} from "./userResponse";
-import {Identifier} from "../../config/identifier";
+import UserAssembler from "./userAssembler";
+import UserResponse from "./userResponse";
+import Identifier from "../../config/identifier";
 
 @injectable()
-export class UserService {
+export default class UserService {
     private userRepo: IUserRepo;
     private userAssembler = new UserAssembler();
     private userFactory = new UserFactory();
