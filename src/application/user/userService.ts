@@ -6,6 +6,8 @@ import {Password} from "../../domain/users/password/password";
 import UserAssembler from "./userAssembler";
 import UserResponse from "./userResponse";
 import Identifier from "../../config/identifier";
+import UserAlreadyExistException from "../../domain/users/exceptions/userAlreadyExist";
+import UserNotFoundException from "../../domain/users/exceptions/userNotFoundException";
 
 @injectable()
 export default class UserService {
@@ -20,7 +22,7 @@ export default class UserService {
     async createUser(name : string, email : string, password : string) : Promise<UserResponse> {
         const user = await this.userRepo.findOneByEmail(email);
         if (user) {
-            throw new Error("User already exists");
+            throw new UserAlreadyExistException();
         }
         const id = UserId.generate();
         const passwordHash = Password.create(password).getHash();
@@ -33,7 +35,7 @@ export default class UserService {
     async getUser(id : string) : Promise<UserResponse> {
         const user = await this.userRepo.findOneById(id);
         if (!user) {
-            throw new Error("User not found");
+            throw new UserNotFoundException();
         }
         return this.userAssembler.toResponse(user);
     }
@@ -41,7 +43,7 @@ export default class UserService {
     async deleteUser(id : string) : Promise<boolean> {
         const user = await this.userRepo.findOneById(id);
         if (!user) {
-            return false;
+            throw new UserNotFoundException();
         }
         return await this.userRepo.deleteUser(id);
     }
@@ -50,7 +52,7 @@ export default class UserService {
     async updateUser(id: string, name: any, email: any, password: any) : Promise<UserResponse> {
         const user = await this.userRepo.findOneById(id);
         if (!user) {
-            throw new Error("User not found");
+            throw new UserNotFoundException();
         }
         const passwordHash = new Password(password).getHash();
         let newUser = this.userFactory.create(id, name, email, passwordHash);

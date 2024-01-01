@@ -1,5 +1,5 @@
 import UserService from "../application/user/userService";
-import {Request, Response} from 'express';
+import {NextFunction, Request, Response} from 'express';
 import {inject, injectable} from "inversify";
 import Identifier from "../config/identifier";
 
@@ -11,54 +11,54 @@ export class UserController{
         this.userService = userService;
     }
 
-    getAllUsers = async (req : Request, res : Response) => {
+    getAllUsers = async (req : Request, res : Response, next : NextFunction) => {
         try {
             const users = await this.userService.getAllUsers();
             res.status(200).send(users);
         } catch (e : any) {
-            res.status(400).send(e.message);
+            next(e)
         }
     }
 
-    addUser = async (req : Request, res : Response) => {
+    addUser = async (req : Request, res : Response, next: NextFunction) => {
         const {name, email, password} = req.body;
         try {
             const user = await this.userService.createUser(name, email, password);
             const header = {Location: `/user/${user.id}`};
             res.status(201).set(header).send(user);
         } catch (e : any) {
-            res.status(400).send(e.message);
+            next(e);
         }
     }
 
-    deleteUser = async (req : Request, res : Response) => {
+    deleteUser = async (req : Request, res : Response, next: NextFunction) => {
         const id = req.params.id;
         try {
             await this.userService.deleteUser(id);
             res.status(200).send();
         } catch (e : any) {
-            res.status(400).send(e.message);
+            next(e)
         }
     }
 
-    getUser = async (req : Request, res : Response) => {
+    getUser = async (req : Request, res : Response, next: NextFunction) => {
         const id = req.params.id;
         try {
             const user = await this.userService.getUser(id);
             res.status(200).send(user);
         } catch (e : any) {
-            res.status(400).send(e.message);
+            next(e)
         }
     }
 
-    updateUser = async (req : Request, res : Response) => {
+    updateUser = async (req : Request, res : Response, next: NextFunction) => {
         const id = req.params.id;
         const {name, email, password} = req.body;
         try {
             const user = await this.userService.updateUser(id, name, email, password);
             res.status(200).send(user);
         } catch (e : any) {
-            res.status(400).send(e.message);
+            next(e)
         }
     }
 }
