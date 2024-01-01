@@ -1,5 +1,6 @@
 import UserService from "../application/user/userService";
 import {NextFunction, Request, Response} from 'express';
+import UserDto from "../controller/dto/userDto";
 import {inject, injectable} from "inversify";
 import Identifier from "../config/identifier";
 
@@ -21,8 +22,9 @@ export class UserController{
     }
 
     addUser = async (req : Request, res : Response, next: NextFunction) => {
-        const {name, email, password} = req.body;
+        const addUserDto : UserDto = req.body;
         try {
+            const {name, email, password} = addUserDto;
             const user = await this.userService.createUser(name, email, password);
             const header = {Location: `/user/${user.id}`};
             res.status(201).set(header).send(user);
@@ -53,8 +55,9 @@ export class UserController{
 
     updateUser = async (req : Request, res : Response, next: NextFunction) => {
         const id = req.params.id;
-        const {name, email, password} = req.body;
+        const updateUserDto : UserDto = req.body;
         try {
+            const {name, email, password} = updateUserDto;
             const user = await this.userService.updateUser(id, name, email, password);
             res.status(200).send(user);
         } catch (e : any) {
