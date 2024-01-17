@@ -2,6 +2,7 @@ import jwt, {Secret} from 'jsonwebtoken';
 import IToken from "./IToken";
 import dotenv from "dotenv";
 import UserPayload from "../users/userPayload";
+import InvalidTokenException from "./exceptions/invalidTokenException";
 
 dotenv.config();
 
@@ -15,7 +16,7 @@ export default class Token implements IToken {
     sign() : string{
         const secret : Secret | undefined = process.env.JWT_SECRET;
         if (!secret) {
-            throw new Error('JWT secret is not defined.');
+            throw new InvalidTokenException();
         }
         return jwt.sign(this.payload, secret, { expiresIn: '1d' }).toString();
     }
@@ -23,7 +24,7 @@ export default class Token implements IToken {
     static fromString(token: string) : IToken{
         const secret : Secret | undefined = process.env.JWT_SECRET;
         if (!secret) {
-            throw new Error('JWT secret is not defined.');
+            throw new InvalidTokenException();
         }
         const payload = jwt.verify(token, secret);
         return new Token(payload as UserPayload);
@@ -32,4 +33,6 @@ export default class Token implements IToken {
     getPayload() : UserPayload {
         return this.payload;
     }
+
+
 }
