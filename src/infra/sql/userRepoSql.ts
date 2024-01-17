@@ -6,7 +6,7 @@ import UserFactory from "../../domain/users/userFactory";
 import {injectable} from "inversify";
 
 @injectable()
-export class UserRepoSql implements IUserRepo{
+export default class UserRepoSql implements IUserRepo{
     private userFactory = new UserFactory();
 
     async save(User: User): Promise<User> {

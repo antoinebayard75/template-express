@@ -1,4 +1,4 @@
-import {UserPayload} from "../users/userPayload";
+import UserPayload from "../users/userPayload";
 
 export default interface IToken {
     sign() : string;

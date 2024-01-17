@@ -5,7 +5,7 @@ import Identifier from "../config/identifier";
 import LoginDto from "./dto/loginDto";
 
 @injectable()
-export class AuthController{
+export default class AuthController{
     private authService: AuthService;
 
     constructor(@inject(Identifier.AuthService) authService: AuthService) {

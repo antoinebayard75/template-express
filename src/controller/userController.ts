@@ -5,7 +5,7 @@ import {inject, injectable} from "inversify";
 import Identifier from "../config/identifier";
 
 @injectable()
-export class UserController{
+export default class UserController{
     private userService: UserService;
 
     constructor(@inject(Identifier.UserService) userService: UserService) {
